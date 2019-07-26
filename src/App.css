@@ -1,0 +1,30 @@
+
+#navbar{
+  background: radial-gradient(#ffb46d, #d05c62) !important;
+}
+#entete{
+  display:flex;
+  justify-content: flex-end;
+}
+#deconnecte{
+  margin-left: 20px;
+}
+
+#good{
+  font-size: 30px;
+  color:white;
+  font-family: "Roboto";
+  font-weight: 400px;
+}
+li {
+  padding-left: 10px;
+  font-size: 20px;
+  font-family: "Roboto";
+  font-weight: 400px;
+}
+#couleur{
+  color:white;
+}
+p{
+  font-family: Verdana;
+}
