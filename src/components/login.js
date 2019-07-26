@@ -3,7 +3,7 @@ import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBModalFooter,
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/authentificate';
-import { Redirect } from 'react-router-dom';
+//import { Redirect } from 'react-router-dom';
 import classnames from 'classnames';
 import './user.css'
 
@@ -26,13 +26,13 @@ class Login extends React.Component {
         })
     }
 
-    renderRedirect = () => { 
-      if (localStorage.getItem('login') == 'true') { 
-        return <Redirect to='/admin' /> 
-      } else { 
-        console.log('test'); 
-      } 
-    }
+    // renderRedirect = () => { 
+    //   if (localStorage.getItem('login') == 'true') { 
+    //     return <Redirect to='/admin' /> 
+    //   } else { 
+    //     console.log('test'); 
+    //   } 
+    // }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -71,7 +71,7 @@ class Login extends React.Component {
     const {errors} = this.state;
     return (
       <div className="container">
-          {this.renderRedirect()}
+          {/* {this.renderRedirect()} */}
           <MDBRow>
           <MDBCol md="0,5"></MDBCol>
             <MDBCol md="6" className="mx-auto mt-2">
