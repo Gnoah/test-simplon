@@ -65,7 +65,7 @@ import './components.css'
         data.append('prix', this.state.prix);
         data.append('duree',  this.state.duree);
                                                                                                                                                               
-        fetch('http://localhost:8080/cuisinier/'+ localStorage.getItem('id'), {
+        fetch('https://simplontest04.herokuapp.com/cuisinier/'+ localStorage.getItem('id'), {
             method: 'POST',
             body: data,
         }).then((response) => {
@@ -73,7 +73,7 @@ import './components.css'
              
                 console.log(body.file1)
                 //  this.setRedirect()
-                axios.get('http://localhost:8080/cuisinier/'+ localStorage.getItem('id')).then(res=>{
+                axios.get('https://simplontest04.herokuapp.com/cuisinier/'+ localStorage.getItem('id')).then(res=>{
             console.log(res.data)
             this.setState({atelier:res.data})
         })
@@ -86,7 +86,7 @@ import './components.css'
       
         this.setState({name:localStorage.getItem('jwtToken')})
         console.log(localStorage.getItem('jwtToken'))
-        axios.get('http://localhost:8080/cuisinier/'+ localStorage.getItem('id')).then(res=>{
+        axios.get('https://simplontest04.herokuapp.com/cuisinier/'+ localStorage.getItem('id')).then(res=>{
             console.log(res.data)
             this.setState({atelier:res.data})
         })
@@ -191,7 +191,7 @@ import './components.css'
             
             <MDBRow>
             {this.state.atelier.length>0 ?(this.state.atelier.map(prof=>{
-                var url="http://localhost:8080/public/"+prof.image
+                var url="https://simplontest04.herokuapp.com/public/"+prof.image
  return (
     <MDBCol lg="3" md="4" className="mb-lg-0">
     <div className='col-md-3 custom-control custom-switch'>
@@ -202,14 +202,14 @@ import './components.css'
     <span>Visibiliter</span>
     {prof.visibilite == true ?(<button onClick={(e)=>{
         e.preventDefault()
-        axios.get("http://localhost:8080/atelieraffichier/"+prof._id).then(res=>{
+        axios.get("https://simplontest04.herokuapp.com/atelieraffichier/"+prof._id).then(res=>{
             
         console.log(res.data)
     })
 
     }}>Desactiver</button>):(<button onClick={(e)=>{
         e.preventDefault()  
-        axios.get("http://localhost:8080/ateliermasquer/"+prof._id).then(res=>console.log(res.data)
+        axios.get("https://simplontest04.herokuapp.com/ateliermasquer/"+prof._id).then(res=>console.log(res.data)
 )
 
     }}>Activer</button>)}

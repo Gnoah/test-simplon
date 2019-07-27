@@ -55,10 +55,6 @@ onChange(event) {
     data.append('prix',this.state.prix);
 console.log(this.props);
 
-// axios.put('http://localhost:8080/atelieraffichier/'+ this.props._id).then(res=>{
-//   console.log(res.data)
-//   this.setState({atelier:res.data})
-// })
 
   fetch('https://simplontest04.herokuapp.com/atelieraffichier/'+ this.props.id, {
     method: 'PUT',
@@ -110,7 +106,7 @@ console.log(this.props);
                 <Input type="number" name="prix" id="item"  placeholder="Add prix" onChange={this.onChange}/>
                 <input ref={(ref) => { this.uploadInput = ref; }} type="file" name="image" required />
                 <Button color="blue" style={{ marginTop: '2rem' }} block>
-                  Update
+                  Modifier
                 </Button>
               </FormGroup>
             </Form>

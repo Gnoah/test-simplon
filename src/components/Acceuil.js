@@ -3,7 +3,7 @@ import axios from 'axios';
 import { MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardFooter } from "mdbreact";
 import Inscrire from './inscrireModal'
 import 'react-confirm-alert/src/react-confirm-alert.css'
-import './components.css'
+import './components.css';
 
 // import Modal from './modal';
 export default class Acceuil extends Component {

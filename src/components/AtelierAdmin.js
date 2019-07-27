@@ -9,6 +9,7 @@ import { logoutUser } from '../actions/authentificate';
 import { Button } from 'reactstrap';
 import ReactImageMagnify from 'react-image-magnify';
 import Edit from './Dashboard/EditAtelier';
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
 import './components.css'
 
  class Admin extends Component {
@@ -95,6 +96,30 @@ import './components.css'
 
         return (
             <div>
+                <MDBNavbar color="red" dark expand="md" style={{ marginTop: "1px" }} id="navbar" className="fixed-top" scrolling > 
+                <MDBNavbarBrand>
+                    < img  className = ""  src = " img/logocooking.png "  alt = " logo " height="60px"/>
+                    <span id="good">Good Cooking</span>
+                </MDBNavbarBrand>
+                    <MDBCollapse id="navbarCollapse3" isOpen={this.state.collapseID} navbar> 
+                    <MDBNavbarNav left>
+                    <MDBNavItem> 
+                        <MDBNavLink to="/" className="nav-header">Acceuil</MDBNavLink>
+                    </MDBNavItem>
+                    <MDBNavItem>
+                        <MDBNavLink to="/actualiter" className="nav-header">Actualiter</MDBNavLink>
+                    </MDBNavItem>
+                </MDBNavbarNav> 
+                <MDBNavbarNav right> 
+                <MDBNavItem>
+                    
+                        <MDBNavLink to="/login" className="nav-header" ><button id="decon"  onClick={()=>{
+                                   this.props.logoutUser(this.props.history);
+                               }}>Deconnecter</button></MDBNavLink> 
+                </MDBNavItem> 
+                    </MDBNavbarNav> 
+                    </MDBCollapse> 
+                    </MDBNavbar>
                 <div className="">
                 <div className="row">
                     <div className="col-md-1">
@@ -119,9 +144,6 @@ import './components.css'
                        <div className="col-md-3">                     
                        </div>
                        <div className="col-md-2">
-                               <button id="decon" onClick={()=>{
-                                   this.props.logoutUser(this.props.history);
-                               }}>deconnecter</button>
                        </div>
                 </div>
                 <div className="row">

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { registerUser } from '../actions/authentificate';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import classnames from 'classnames';
 
 import "bootstrap/dist/css/bootstrap.css"
@@ -54,19 +54,36 @@ class Register extends Component {
         }
     }
 
-    // renderRedirect = () => { 
-    //   if (localStorage.getItem('login') == 'true') { 
-    //     return <Redirect to='/admin' /> 
-    //   } else { 
-    //     console.log('test'); 
-    //   } 
+    renderRedirect = () => { 
+      if (localStorage.getItem('login') == 'true') { 
+        return <Redirect to='/admin' /> 
+      } else { 
+        console.log('test'); 
+      } 
+    }
+  
+    // componentWillReceiveProps(nextProps) {
+    //     if(nextProps.auth.isAuthenticated) {
+    //         this.props.history.push('/')
+    //     }
+    //     if(nextProps.errors) {
+    //         this.setState({
+    //             errors: nextProps.errors
+    //         });
+    //     }
     // }
-    
+
+    // componentDidMount() {
+    //     if(this.props.auth.isAuthenticated) {
+    //         this.props.history.push('/');
+    //     }
+    // }
+
   render() {
     const { errors } = this.state;
     return (
       <div>
-        {/* {this.renderRedirect()} */}
+        {this.renderRedirect()}
         <div id="corps">
           <MDBRow>
           <MDBCol md="0,5"></MDBCol>

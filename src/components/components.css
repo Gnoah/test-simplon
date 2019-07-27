@@ -88,8 +88,8 @@ p{
     border: none;
 }
 #decon{
-    border-radius: 10px;
-    background-color: rgb(223, 223, 223) !important;
+    border: none !important;
+    background-color: transparent !important;
 }
 
 #li1{

@@ -19,7 +19,7 @@ const CardExample = () => {
                 <strong>Crep vegetarien</strong>
               </MDBCardTitle>
               <p>
-              Good cooking vous ivitez toujour de suivez nos page est vous voyez baucoup de atelier ici
+              La cuisine est multi-sensorielle. Elle s'adresse à l'oeil, à la bouche, au nez, à l'oreille et à l'esprit. Aucun art ne possède cette complexité
               </p>{/* 
               <MDBBtn color="pink">
                 <MDBIcon icon="clone left" /> View project
@@ -42,7 +42,7 @@ const CardExample = () => {
                 <strong>Au frome et Porc</strong>
               </MDBCardTitle>
               <p>           
-              Emblèmes de la Belgique, vous connaissez. Mais qu’en est-il des gaufres salées ?
+              La cuisine ne s'apprend pas réellement. La cuisine, on la vit. On la vit et on a une folle envie de la faire
               </p>{/*
               <MDBBtn color="deep-orange">
                  <MDBIcon icon="clone left" /> View project 

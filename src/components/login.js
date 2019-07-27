@@ -3,7 +3,7 @@ import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBModalFooter,
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/authentificate';
-//import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import classnames from 'classnames';
 import './user.css'
 
@@ -26,13 +26,13 @@ class Login extends React.Component {
         })
     }
 
-    // renderRedirect = () => { 
-    //   if (localStorage.getItem('login') == 'true') { 
-    //     return <Redirect to='/admin' /> 
-    //   } else { 
-    //     console.log('test'); 
-    //   } 
-    // }
+    renderRedirect = () => { 
+      if (localStorage.getItem('login') == 'true') { 
+        return <Redirect to='/admin' /> 
+      } else { 
+        console.log('test'); 
+      } 
+    }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -71,7 +71,7 @@ class Login extends React.Component {
     const {errors} = this.state;
     return (
       <div className="container">
-          {/* {this.renderRedirect()} */}
+          {this.renderRedirect()}
           <MDBRow>
           <MDBCol md="0,5"></MDBCol>
             <MDBCol md="6" className="mx-auto mt-2">
@@ -94,7 +94,7 @@ class Login extends React.Component {
                       {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
                     </div>
                     <div className="text-center pt-3 mb-3" id="mail2">
-                      <MDBBtn type="submit" gradient="purple" id="bt" ><a >connexion</a></MDBBtn>
+                      <MDBBtn type="submit" gradient="purple" id="bt" ><a >Connexion</a></MDBBtn>
                     </div>
 
                     <div className="row my-3 d-flex justify-content-center" id="mail3">
@@ -115,7 +115,7 @@ class Login extends React.Component {
                  
                 </MDBCardBody>
                 <MDBModalFooter className="mx-5 pt-3 mb-1" id="mail4">
-                  <p className="grey-text d-flex justify-content-end" style={smallStyle}>Already a member? <a href="#!" className="blue-text ml-1"> Sign In</a></p>
+                  <p className="grey-text d-flex justify-content-end" style={smallStyle}>Already a member? <a href="#!" className="blue-text ml-1">Connexion</a></p>
                 </MDBModalFooter>
               </MDBCard>
             </MDBCol>
