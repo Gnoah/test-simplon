@@ -180,7 +180,7 @@ import './components.css'
                         value={ this.state.description } required/>
                         <MDBInput type="date" class="form-control"  name="date" label="date" onChange={ this.handleChange }
                         value={ this.state.date } required/>
-                        <MDBInput type="time" class="form-control"  name="horaire" label="horaire" onChange={ this.handleChange }
+                        <MDBInput type="number" class="form-control"  name="horaire" label="horaire" onChange={ this.handleChange }
                         value={ this.state.horaire } required/>
                     </div>
                     <div className="col-md-6">
@@ -238,7 +238,25 @@ import './components.css'
 )
 
     }}><i class="glyphicon glyphicon-ok"></i>visibilité: Activer</button>)}
-      <Edit id ={prof._id}/>
+    <div className="row"> 
+    <div className="col-md-4">       
+        </div>
+        <div className="col-md-4">
+            <Edit id ={prof._id}/>
+        </div>
+        <div className="col-md-4">
+        <Button className="remove-btn" color="danger" size="sm" id="boutton" onClick={(e)=>{
+        e.preventDefault()
+        axios.delete("https://simplontest04.herokuapp.com/atelier/"+prof._id).then(res=>{
+            axios.get('https://simplontest04.herokuapp.com/cuisinier/'+ localStorage.getItem('id')).then(res=>{
+                console.log(res.data)
+                this.setState({atelier:res.data})
+            })
+        console.log(res.data)
+    })
+    }} >&times;</Button>
+        </div>      
+    </div>
       <ReactImageMagnify {...{   smallImage: {
                               alt: 'one',
                               isFluidWidth: true,
