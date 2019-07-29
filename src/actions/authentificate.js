@@ -7,6 +7,8 @@ export const registerUser = (user, history) => dispatch => {
     axios.post('https://simplontest04.herokuapp.com/register', user)
             .then(res => {
                 history.push('/login');
+                localStorage.setItem(res.data.nom);
+                localStorage.setItem('id', res.data.id);
                 localStorage.setItem('login', true)
             })
             .catch(err => {
