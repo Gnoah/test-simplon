@@ -8,9 +8,10 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authentificate';
 import { Button } from 'reactstrap';
 import ReactImageMagnify from 'react-image-magnify';
-import Edit from './Dashboard/EditAtelier';
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
 import './components.css'
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
  class Admin extends Component {
     constructor(props) {
@@ -239,12 +240,70 @@ import './components.css'
 
     }}><i class="glyphicon glyphicon-ok"></i>visibilité: Activer</button>)}
     <div className="row"> 
-    <div className="col-md-4">       
+    <div className="col-md-3">       
         </div>
         <div className="col-md-4">
-            <Edit id ={prof._id}/>
+        <Button id="boutton" className="btn-primary"onClick={() => {
+                                        confirmAlert({
+                                            customUI: ({ onClose }) => {
+                                                return (
+                                                    <div  id ="confirm"className='custom-ui'>
+                                                        <h2 class="card-title">Modification Atelier</h2>
+                                                        <input id="input" name="titre" onChange={this.handleChange} placeholder="Entrer votre titre" value={this.state.value} /><br />
+                                                        <input id="input" name="description" onChange={this.handleChange} placeholder="Entrer votre description" v alue={this.state.value} /><br />
+                                                        <input id="input" name="date" onChange={this.handleChange} placeholder="Entrer votre email" value={this.state.value} type="date" /><br />
+                                                        <input id="input" name="horaire" onChange={this.handleChange} placeholder="Entrer votre horaire" /><br />
+                                                        <input id="input" name="placedispo" onChange={this.handleChange} placeholder="Entrer place disponible" type="Number" value={this.state.value} /><br />
+                                                        <input id="input" name="placereserve" onChange={this.handleChange} placeholder="Entrer place reserve" type="Number" alue={this.state.value} /><br />
+                                                        <input id="input"name="prix" onChange={this.handleChange} placeholder="Entrer prix" type="Number" value={this.state.value} /><br />
+                                                        <input id="input" name="telephone" ref={(ref) => { this.uploadInput2 = ref; }} type="file" /><br />
+                                                        <button onClick={onClose} className=" BOU1 btn btn-secondary">Fermer</button>
+                                                        <button
+                                                            onClick={() => {
+                                                                const data2 = new FormData();
+                                                                data2.append('image', this.uploadInput2.files[0]);
+                                                                data2.append('titre', this.state.titre);
+                                                                data2.append('description', this.state.description);
+                                                                data2.append('date', this.state.date);
+                                                                data2.append('horaire', this.state.horaire);
+                                                                // data.append('duree',  this.state.duree);
+                                                                data2.append('placedispo', this.state.placedispo);
+                                                                data2.append('placereserve', this.state.placereserve);
+                                                                data2.append('prix', this.state.prix);
+                                                                data2.append('duree', this.state.duree);
+
+                                                                fetch('https://simplontest04.herokuapp.com/atelieraffichier/'+ prof._id, {
+                                                                    method: 'PUT',
+                                                                    body: data2,
+                                                                }).then((response) => {
+                                                                    response.json().then((body) => {
+
+                                                                        console.log(body.file1)
+                                                                        //  this.setRedirect()
+                                                                        axios.get('https://simplontest04.herokuapp.com/cuisinier/' + localStorage.getItem('id')).then(res => {
+                                                                            console.log(res.data)
+                                                                            this.setState({ atelier: res.data })
+                                                                        })
+
+                                                                    });
+                                                                    onClose();
+                                                                });
+
+
+
+
+                                                            }}
+                                                            className="  BOU btn btn-success">
+                                                            Modifier
+                                                            </button>
+                                                    </div>
+                                                );
+                                            }
+                                        });
+                                    }}>Modifier</Button>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-1"></div>
+        <div className="col-md-3">
         <Button className="remove-btn" color="danger" size="sm" id="boutton" onClick={(e)=>{
         e.preventDefault()
         axios.delete("https://simplontest04.herokuapp.com/atelier/"+prof._id).then(res=>{

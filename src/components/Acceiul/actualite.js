@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardFooter } from "mdbreact";
-import Inscrire from '../inscrireModal';
-import 'react-confirm-alert/src/react-confirm-alert.css'
-import '../components.css'
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import {
+  Button,
+  Label,
+  Input
+} from 'reactstrap';
+import '../components.css';
 
 // import Modal from './modal';
 export default class Acceuil extends Component {
@@ -78,7 +83,43 @@ render() {
                 <span className="float-right">
                 </span>
               <div className="">
-              <Inscrire id={menu._id} />
+              <Button class=" inscr btn btn-primary" onClick={()=>{
+                confirmAlert({
+                    customUI: ({ onClose }) => {
+                      return (
+                        <div id="confirm2" className='custom-ui'>
+                        <Label for="item">Inscrire sur Atelier</Label>
+                        <Input id="input" name="nom" onChange={ this.handleChange } placeholder="Entrer votre nom" value={this.state.value}/>
+                        <Input id="input" name="prenom" onChange={ this.handleChange }  placeholder="Entrer votre prenom"v alue={this.state.value}/>
+                        <Input id="input" name="email" onChange={ this.handleChange } placeholder="Entrer votre email" value={this.state.value}/>
+                        <Input id="input" name="telephone" onChange={ this.handleChange } placeholder="Entrer votre numero telephone"/>   
+                          <button  className=" btn btn-secondary BOU1"onClick={onClose}>Fermer</button>
+                          <button
+                            onClick={() => {
+                                axios.post("https://simplontest04.herokuapp.com/particulier/"+ menu._id,{
+                                    nom:this.state.nom,
+                                    prenom:this.state.prenom,
+                                    email:this.state.email,
+                                    telephone:this.state.telephone
+                                }).then(res=>{
+                                  axios.get("https://simplontest04.herokuapp.com/atelier").then(res => {
+           
+            this.setState({ profil: res.data })
+            console.log(this.state.profil)
+  
+        })
+                                  console.log(res.data);
+                                })
+                              onClose();
+                            }}
+                          className="btn btn-success">
+                          Participer
+                          </button>
+                        </div>
+                      );
+                    }
+                  });
+                 }}  className="  btn BOU1" >S'inscrire</Button>
 
               </div>
               </MDBCardFooter>
