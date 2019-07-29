@@ -193,7 +193,10 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
                         value={ this.state.placereserve } required/>
                         <MDBInput type="Number" class="form-control"  name="prix" label="Prix" onChange={ this.handleChange }
                         value={ this.state.prix } required/>
-                         <input ref={(ref) => { this.uploadInput = ref; }} type="file" required name="image"/>
+                         <label className="btn btn-default btn-file" id="fichier">
+                    ajouter image<input ref={(ref) => { this.uploadInput = ref; }} type="file" name="image"   required/>
+                 </label>
+                         
                     </div>
                     <Button color="blue" style={{ marginTop: '2rem' }} block>
                         Publier
@@ -240,7 +243,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
     }}><i class="glyphicon glyphicon-ok"></i>visibilité: Activer</button>)}
     <div className="row"> 
-    <div className="col-md-3">       
+    <div className="col-md-4">       
         </div>
         <div className="col-md-4">
         <Button id="boutton" className="btn-primary"onClick={() => {
@@ -256,8 +259,10 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
                                                         <input id="input" name="placedispo" onChange={this.handleChange} placeholder="Entrer place disponible" type="Number" value={this.state.value} /><br />
                                                         <input id="input" name="placereserve" onChange={this.handleChange} placeholder="Entrer place reserve" type="Number" alue={this.state.value} /><br />
                                                         <input id="input"name="prix" onChange={this.handleChange} placeholder="Entrer prix" type="Number" value={this.state.value} /><br />
-                                                        <input id="input" name="telephone" ref={(ref) => { this.uploadInput2 = ref; }} type="file" /><br />
-                                                        <button onClick={onClose} className=" BOU1 btn btn-secondary">Fermer</button>
+                                                        <label className="btn btn-default btn-file" id="fichier">
+                                                        ajouter image<input ref={(ref) => { this.uploadInput2 = ref; }} type="file" name="image" name="image"   required/>
+                                                    </label><br />
+                                                        <button onClick={onClose} className=" BOU1 btn btn-danger">Fermer</button>
                                                         <button
                                                             onClick={() => {
                                                                 const data2 = new FormData();
@@ -293,17 +298,17 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 
                                                             }}
-                                                            className="  BOU btn btn-success">
+                                                            className="  BOU btn btn-default">
                                                             Modifier
                                                             </button>
                                                     </div>
                                                 );
                                             }
                                         });
-                                    }}>Modifier</Button>
+                                    }}><i className="fas fa-pen"></i></Button>
         </div>
-        <div className="col-md-1"></div>
-        <div className="col-md-3">
+        {/* <div className="col-md-1"></div> */}
+        <div className="col-md-2">
         <Button className="remove-btn" color="danger" size="sm" id="boutton" onClick={(e)=>{
         e.preventDefault()
         axios.delete("https://simplontest04.herokuapp.com/atelier/"+prof._id).then(res=>{

@@ -93,7 +93,7 @@ render() {
                         <Input id="input" name="prenom" onChange={ this.handleChange }  placeholder="Entrer votre prenom"v alue={this.state.value}/>
                         <Input id="input" name="email" onChange={ this.handleChange } placeholder="Entrer votre email" value={this.state.value}/>
                         <Input id="input" name="telephone" onChange={ this.handleChange } placeholder="Entrer votre numero telephone"/>   
-                          <button  className=" btn btn-secondary BOU1"onClick={onClose}>Fermer</button>
+                          <button  className=" btn btn-danger BOU1"onClick={onClose}>Fermer</button>
                           <button
                             onClick={() => {
                                 axios.post("https://simplontest04.herokuapp.com/particulier/"+ menu._id,{
